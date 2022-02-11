@@ -1,8 +1,9 @@
-#include <sdkddkver.h>
 #include <iostream>
-#include <boost/asio.hpp>
+#include "Server.h"
 
 int main() {
-  std::cout << "Hello, Server!" << std::endl;
+  tcp::endpoint endpoint(ip::address::from_string("127.0.0.1"), 8080);
+  Server server("", endpoint);
+  server.run();
   return 0;
 }
