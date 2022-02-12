@@ -38,6 +38,7 @@ void Server::Session::write(size_t length) {
   async_write(socket, buffer(data, length),
               [this, self](error_code ec, std::size_t /*length*/){
     if (!ec) {
+      std::cout << "Send data" << std::endl;
       read();
     }
   });
@@ -60,6 +61,7 @@ void Server::acceptClient() {
 }
 
 void Server::run() {
+  std::cout << "Server started" << std::endl;
   context.run();
 }
 

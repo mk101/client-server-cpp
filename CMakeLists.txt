@@ -11,3 +11,5 @@ message(STATUS "Boost version: ${Boost_VERSION}")
 
 add_subdirectory(server)
 add_subdirectory(client)
+
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/patients/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/patients/)
