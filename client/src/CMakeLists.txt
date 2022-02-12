@@ -1,4 +1,7 @@
 include_directories(${Boost_INCLUDE_DIR})
-add_executable(client main.cpp)
+#link_directories(${Boost_LIBRARY_DIRS})
+add_executable(client main.cpp Client.cpp)
 
-target_link_libraries(client PUBLIC ${Boost_LIBRARIE})
+target_link_directories(client PUBLIC ${Boost_LIBRARY_DIRS})
+#target_link_libraries(client PUBLIC ${Boost_LIBRARY_DIRS}/)
+#target_link_libraries(client ${Boost_LIBRARIES})
