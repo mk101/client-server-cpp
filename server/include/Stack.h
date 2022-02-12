@@ -19,8 +19,33 @@ class Stack {
   explicit Stack(size_t size = 10) : size(size), num(0) {
     mass = new T[size];
   }
+  Stack(const Stack<T> &s) {
+    size = s.size;
+    num = s.num;
+    topInd = s.topInd;
+    mass = new T[size];
+    for (size_t i = 0; i < size; i++) {
+      mass[i] = s.mass[i];
+    }
+  }
   ~Stack() {
     delete[] mass;
+  }
+
+  Stack<T> &operator=(const Stack<T> &s) {
+    if (&s == this) {
+      return *this;
+    }
+
+    size = s.size;
+    num = s.num;
+    topInd = s.topInd;
+    mass = new T[size];
+    for (size_t i = 0; i < size; i++) {
+      mass[i] = s.mass[i];
+    }
+
+    return *this;
   }
 
   [[nodiscard]] bool isEmpty() const {
