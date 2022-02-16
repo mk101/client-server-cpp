@@ -16,6 +16,7 @@ void Server::Session::read() {
      if (strcmp("end", data) == 0) {
        if (currentPatient) {
          queue.push(*currentPatient);
+         close();
          return;
        }
      }
@@ -42,6 +43,16 @@ void Server::Session::write(size_t length) {
       read();
     }
   });
+}
+
+Server::Session::~Session() {
+  close();
+}
+
+void Server::Session::close() {
+  if (socket.is_open()) {
+    socket.close();
+  }
 }
 
 Server::Server(const Queue<PatientCard> &queue, const tcp::endpoint &endpoint)

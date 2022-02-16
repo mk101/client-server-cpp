@@ -41,7 +41,9 @@ class Server {
     void write(size_t length);
    public:
     explicit Session(tcp::socket socket, Queue<PatientCard> &queue);
+    ~Session();
     void start();
+    void close();
   };
 
   // Accept client and start with him new session
