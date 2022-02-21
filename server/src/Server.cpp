@@ -50,6 +50,10 @@ Server::Session::~Session() {
 }
 
 void Server::Session::close() {
+  if (currentPatient) {
+    queue.push(*currentPatient);
+  }
+
   if (socket.is_open()) {
     socket.close();
   }
