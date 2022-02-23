@@ -16,6 +16,7 @@ void Server::Session::read() {
      if (strcmp("end", data) == 0) {
        if (currentPatient) {
          queue.push(*currentPatient);
+         currentPatient = nullptr;
          close();
          return;
        }

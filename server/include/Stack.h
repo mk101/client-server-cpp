@@ -12,7 +12,7 @@ class Stack {
   size_t num;
   int32_t topInd = -1;
   [[nodiscard]] virtual int32_t getNextInd(int32_t index) const {
-    return index++;
+    return ++index;
   }
 
  public:
